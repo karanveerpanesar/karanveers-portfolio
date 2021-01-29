@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="style3.css">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Describe this page." />
+        <title>Project 0</title>  
+    </head>
+    <body>
+        <audio id="marioAudio" src="https://vgmsite.com/soundtracks/super-smash-bros.-melee-original-sound-version/vsamqawm/1-01%20Opening.mp3" preload="auto"></audio>
+        <section><div class="mario-face">
+            <div class="mario-eyes">
+                <div class="mario-eye"></div>
+                <div class="mario-eye"></div>
+            </div>
+            <div class="mario-hat"></div>
+            <div class="mario-logo">M</div>
+            <div class="mario-left-eyebrow"></div>
+            <div class="mario-right-eyebrow"></div>
+
+            <div class="mario-moustache"></div>
+            <div class="mario-chin"></div>
+            <div style="cursor:pointer" href="#" onclick="playAudio()" class="mario-nose"></div>
+        </div>
+    </section>
+    
+        <script>
+            document.querySelector('body').addEventListener('mousemove', eyeball);
+            function eyeball(){
+                var eye = document.querySelectorAll
+                ('.mario-eye');
+                eye.forEach(function(eye){
+                    let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+                    let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+                    let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                    let rot = (radian * (180 / Math.PI) * -1) + 270;
+                    eye.style.transform = "rotate("+ rot + "deg)";
+                })
+            }
+            
+            var music = document.getElementById("marioAudio");
+            
+            function playAudio() {
+                return music.paused ? music.play() : music.pause();
+            };
+            /*music.currentTime = 0*/
+           
+            function bubbles(){
+                var count = 500;
+                var section = document.querySelector('section');
+                var i = 0;
+                while (i < count){
+                    var bubble = document.createElement('i');
+                    var x = Math.floor(Math.random() * window.innerWidth);
+                    var y = Math.floor(Math.random() * window.innerHeight);
+                    var size = Math.random() * 10;
+                    bubble.style.left = x+'px';
+                    bubble.style.top = y+'px';
+                    bubble.style.width = 1+size+'px';
+                    bubble.style.height = 1+size+'px';
+
+                    bubble.style.animationDuration = 20+size+'s';
+                    bubble.style.animationDelay = -size+'s';
+                    section.appendChild(bubble);
+                    i++
+                }
+                
+            }
+            
+        
+        </script>
+    </body>
+    <footer>
+
+    </footer>
+
+<!-- Scripts-->
+
+</html>
