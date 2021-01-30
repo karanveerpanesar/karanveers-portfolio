@@ -2,16 +2,21 @@
 <html lang="en">
     <head>
         <link rel="icon" href="favicon.ico">
-        <link rel="stylesheet" href="style3.css">
+        <link rel="stylesheet" href="style.css">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Describe this page." />
         <title>Project 0</title>  
     </head>
-    <body>
+    <body id="back">
         <audio id="marioAudio" src="https://vgmsite.com/soundtracks/super-smash-bros.-melee-original-sound-version/vsamqawm/1-01%20Opening.mp3" preload="auto"></audio>
-        <section><div class="mario-face">
-            <div class="mario-eyes">
+        <audio id="snoring" src="snoring.mp3" preload="auto"></audio>
+        <audio id="sleepmusic" src="rain.mp3" preload="auto"></audio>
+        <section>
+            <div id = "newColor" style="cursor:pointer" href="#" onclick="playAudio(), hide(), changeColor()"class="mario-face">
+            <div class="mario-left-eye-shut"></div>
+            <div class="mario-right-eye-shut"></div>
+            <div id="eyes" class="mario-eyes">
                 <div class="mario-eye"></div>
                 <div class="mario-eye"></div>
             </div>
@@ -22,11 +27,28 @@
 
             <div class="mario-moustache"></div>
             <div class="mario-chin"></div>
-            <div style="cursor:pointer" href="#" onclick="playAudio()" class="mario-nose"></div>
+            <div class="mario-nose"></div>
+            
         </div>
     </section>
+
     
         <script>
+            function draw(){
+                ellipse(255, 0, 150);
+            }
+            function hide() {
+                var x = document.getElementById("eyes");
+                if (x.style.display == "none"){
+                    x.style.display = "flex";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            function changeColor() {
+                document.getElementById('back').classList.toggle("the-class");
+            }
+            
             document.querySelector('body').addEventListener('mousemove', eyeball);
             function eyeball(){
                 var eye = document.querySelectorAll
@@ -40,34 +62,15 @@
                 })
             }
             
-            var music = document.getElementById("marioAudio");
+            var music = document.getElementById("sleepmusic");
             
             function playAudio() {
                 return music.paused ? music.play() : music.pause();
             };
             /*music.currentTime = 0*/
+            
            
-            function bubbles(){
-                var count = 500;
-                var section = document.querySelector('section');
-                var i = 0;
-                while (i < count){
-                    var bubble = document.createElement('i');
-                    var x = Math.floor(Math.random() * window.innerWidth);
-                    var y = Math.floor(Math.random() * window.innerHeight);
-                    var size = Math.random() * 10;
-                    bubble.style.left = x+'px';
-                    bubble.style.top = y+'px';
-                    bubble.style.width = 1+size+'px';
-                    bubble.style.height = 1+size+'px';
-
-                    bubble.style.animationDuration = 20+size+'s';
-                    bubble.style.animationDelay = -size+'s';
-                    section.appendChild(bubble);
-                    i++
-                }
-                
-            }
+            
             
         
         </script>
